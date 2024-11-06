@@ -1,7 +1,9 @@
 package com.techie.microservices.notification.service;
 
+import com.techie.microservices.order.event.OrderPlacedEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -13,6 +15,9 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 public class NotificationService {
+
+    @Autowired
+    public OrderPlacedEvent orderPlacedEvent;
 
     private final JavaMailSender javaMailSender;
 
